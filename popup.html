@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PaceMeter</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <h1>PaceMeter</h1>
+      <span class="sub">Local Speed Guard</span>
+    </header>
+
+    <div class="actions">
+      <button id="launch-btn" class="primary">Show Overlay on Current Tab</button>
+      <button id="window-btn" class="secondary">Open Standalone Meter Window</button>
+      <button id="stop-btn" class="ghost">Stop Overlay on Current Tab</button>
+    </div>
+
+    <div id="notice" class="notice" style="display:none;"></div>
+
+    <div class="field">
+      <label for="high-wpm">High-Speed Alert Threshold <strong id="high-wpm-val">168 WPM</strong></label>
+      <input id="high-wpm" type="range" min="135" max="220" value="168" />
+    </div>
+
+    <div class="field">
+      <label for="min-wpm">Minimum Optimal Pace <strong id="min-wpm-val">115 WPM</strong></label>
+      <input id="min-wpm" type="range" min="85" max="140" value="115" />
+    </div>
+
+    <div class="row">
+      <label class="check"><input id="chime-toggle" type="checkbox" checked /> Gentle slow-down chime</label>
+      <label class="check"><input id="compact-toggle" type="checkbox"  /> Compact floating HUD</label>
+    </div>
+
+    <footer class="foot">
+      <button id="mic-help-btn" class="link-btn">Test Microphone Permission</button>
+      <span class="shortcut">Alt+Shift+P</span>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PaceMeter Live Window</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0F172A;
+      color: #F8FAFC;
+      padding: 14px 16px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: background-color 180ms ease;
+    }
+    body.alert { background: #450A0A; }
+    .top { display: flex; justify-content: space-between; align-items: center; }
+    .brand { font-size: 12px; font-weight: 700; color: #94A3B8; }
+    .btn {
+      background: #0284C7;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 5px 11px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn.stop { background: #DC2626; }
+    .readout { display: flex; align-items: baseline; justify-content: space-between; margin-top: 6px; }
+    .wpm { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 44px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+    .unit { font-family: ui-monospace, monospace; font-size: 12px; color: #94A3B8; }
+    .state { font-size: 13px; font-weight: 600; color: #94A3B8; margin-top: 4px; }
+    .state.optimal { color: #34D399; }
+    .state.caution { color: #FBBF24; }
+    .state.high { color: #FCA5A5; }
+    .state.slow { color: #38BDF8; }
+    .track { height: 7px; background: rgba(148,163,184,0.22); border-radius: 4px; overflow: hidden; margin-top: 10px; }
+    .fill { height: 100%; width: 0%; background: #38BDF8; transition: width 180ms ease, background-color 180ms ease; }
+    .meta { display: flex; justify-content: space-between; font-family: ui-monospace, monospace; font-size: 11px; color: #94A3B8; margin-top: 8px; }
+    #err { font-size: 11px; color: #FCA5A5; margin-top: 6px; display: none; }
+  </style>
+</head>
+<body>
+  <div class="top">
+    <span class="brand">PaceMeter · Local Window</span>
+    <button id="toggle-btn" class="btn">Start Mic</button>
+  </div>
+  <div>
+    <div class="readout">
+      <div><span id="wpm" class="wpm">0</span> <span class="unit">WPM</span></div>
+      <span id="limit" class="unit">Alert 168</span>
+    </div>
+    <div id="state" class="state">Click Start Mic to monitor</div>
+    <div class="track"><div id="fill" class="fill"></div></div>
+    <div id="err"></div>
+  </div>
+  <div class="meta">
+    <span id="lvl">Input: 0%</span>
+    <span id="eng">Local DSP</span>
+  </div>
+  <script src="meter.js"></script>
+</body>
+</html>
